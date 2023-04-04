@@ -1,0 +1,41 @@
+version: "3.5"
+services:
+  pqldb:
+    image: postgres
+    ports:
+      - "5001:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bank_gab
+    volumes:
+      - users-data:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8001:8080"
+volumes:
+  users-data:
+
+#  db:
+#    image: mysql:5.7
+#    environment:
+#      MYSQL_DATABASE: bank_gab
+#      MYSQL_ROOT_PASSWORD: password
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - C:\data:/var/lib/mysql
+#  phpmyadmin:
+#    image: phpmyadmin
+#    ports:
+#      - "8088:80"
+#    environment:
+#      - PMA_HOST=db
+#      - PMA_PORT=3306
+#      - PMA_USER=root
+#      - PMA_PASSWORD=password
+#    depends_on:
+#      - db
+#    restart: always
